@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Monitoring Surat BPS Mempawah</title>
     <style>
+        /* Optimasi untuk loading lebih cepat */
         * {
             margin: 0;
             padding: 0;
@@ -20,28 +21,9 @@
             justify-content: center;
             padding: 20px;
             position: relative;
-            overflow: hidden;
         }
 
-        /* Background decoration */
-        body::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(1deg); }
-            66% { transform: translate(-20px, 20px) rotate(-1deg); }
-        }
+        /* Background decoration - REMOVED untuk performa */
 
         .container {
             max-width: 1200px;
@@ -52,8 +34,7 @@
         }
 
         .header {
-            margin-bottom: 60px;
-            animation: slideDown 1s ease-out;
+            margin-bottom: 40px;
         }
 
         .header h1 {
@@ -68,10 +49,11 @@
 
         .header .subtitle {
             color: rgba(255,255,255,0.95);
-            font-size: 1.4em;
-            font-weight: 300;
+            font-size: 1.8em;
+            font-weight: 600;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
             margin-bottom: 5px;
+            letter-spacing: 1px;
         }
 
         .header .organization {
@@ -80,6 +62,33 @@
             font-weight: 600;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
             letter-spacing: 1px;
+        }
+
+        /* Service Commitment Banner */
+        .service-commitment {
+            background: linear-gradient(135deg, #2C5AA0, #4A90E2);
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin: 30px auto 50px;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .commitment-title {
+            color: white;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .commitment-text {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.1em;
+            font-weight: 500;
+            line-height: 1.4;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .menu-container {
@@ -93,7 +102,7 @@
         .menu-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 25px;
-            padding: 80px 60px;
+            padding: 60px 50px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.2);
@@ -135,7 +144,7 @@
             font-size: 2.8em;
             font-weight: 700;
             color: #4A90E2;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
             position: relative;
@@ -146,6 +155,16 @@
             font-size: 2.2em;
             font-weight: 600;
             color: #2C5AA0;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .menu-description {
+            font-size: 1.1em;
+            color: #666;
+            font-weight: 400;
+            line-height: 1.4;
             position: relative;
             z-index: 2;
         }
@@ -165,26 +184,25 @@
         }
 
         .internal {
-            animation: slideInLeft 1s ease-out 0.2s both;
+            /* animation removed */
         }
 
-        .eksternal {
-            animation: slideInRight 1s ease-out 0.4s both;
+        .track {
+            /* animation removed */
         }
 
         .internal .menu-icon {
             color: #4A90E2;
         }
 
-        .eksternal .menu-icon {
+        .track .menu-icon {
             color: #5BA3F5;
         }
 
         .footer {
-            margin-top: 60px;
+            margin-top: 15px;
             color: rgba(255,255,255,0.8);
             font-size: 1.1em;
-            animation: fadeIn 2s ease-out 1s both;
         }
 
         .footer .version {
@@ -395,51 +413,11 @@
             margin-left: 8px;
         }
 
+        /* Track Modal Styles - REMOVED */
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
 
         @keyframes shake {
@@ -460,11 +438,24 @@
             }
 
             .header .subtitle {
-                font-size: 1.1em;
+                font-size: 1.4em;
             }
 
             .header .organization {
                 font-size: 1.4em;
+            }
+
+            .service-commitment {
+                padding: 15px 20px;
+                margin: 20px auto 30px;
+            }
+
+            .commitment-title {
+                font-size: 1.1em;
+            }
+
+            .commitment-text {
+                font-size: 1em;
             }
 
             .menu-container {
@@ -473,7 +464,7 @@
             }
 
             .menu-card {
-                padding: 60px 40px;
+                padding: 50px 30px;
             }
 
             .menu-title {
@@ -484,13 +475,17 @@
                 font-size: 1.8em;
             }
 
+            .menu-description {
+                font-size: 1em;
+            }
+
             .menu-icon {
                 font-size: 2.5em;
                 top: 20px;
                 right: 20px;
             }
 
-            .login-modal {
+            .login-modal, .track-modal {
                 padding: 30px 25px;
                 margin: 0 15px;
             }
@@ -505,26 +500,66 @@
     <div class="container">
         <div class="header">
             <h1>Dashboard Monitoring Surat</h1>
-            <div class="subtitle">Masuk dan Surat Keluar</div>
+            <div class="subtitle">ARSIPANDA</div>
             <div class="organization">BPS Kabupaten Mempawah</div>
+        </div>
+
+        <!-- Service Commitment Banner -->
+        <div class="service-commitment">
+            <div class="commitment-title">KOMITMEN PELAYANAN KAMI</div>
+            <div class="commitment-text">
+                Surat Anda akan kami proses dan balas maksimal 2 hari kerja
+            </div>
         </div>
 
         <div class="menu-container">
             <a href="#" 
                class="menu-card internal" 
-               onclick="showLoginModal(event)">
+               onclick="accessSystem(event)">
                 <div class="menu-icon">🏢</div>
                 <div class="menu-title">Menu</div>
                 <div class="menu-subtitle">Internal</div>
+                <div class="menu-description">Akses pengelolaan surat masuk, surat keluar, dan monitoring internal</div>
+                <!-- Tombol di Card -->
+                <div style="margin-top: 25px; text-align: center;">
+                    <button class="btn btn-primary" onclick="event.stopPropagation(); accessSystem();" style="padding: 12px 25px; font-size: 15px;">
+                        🔐 Akses Internal
+                    </button>
+                </div>
             </a>
 
-        <a href="https://sukmaandini.github.io/surat2/" 
-        class="menu-card eksternal" 
-        target="_blank">
-            <div class="menu-icon">🌐</div>
-            <div class="menu-title">Menu</div>
-            <div class="menu-subtitle">Eksternal</div>
-        </a>
+            <a href="https://sukmaandini.github.io/surat2/" 
+               class="menu-card track" 
+               target="_blank">
+                <div class="menu-icon">📍</div>
+                <div class="menu-title">Lacak</div>
+                <div class="menu-subtitle">Surat</div>
+                <div class="menu-description">Cek status dan progress pengerjaan surat Anda</div>
+                <!-- Tombol di Card -->
+                <div style="margin-top: 25px; text-align: center;">
+                    <button class="btn btn-primary" onclick="event.stopPropagation(); window.open('https://sukmaandini.github.io/surat2/', '_blank');" style="padding: 12px 25px; font-size: 15px;">
+                        📍 Lacak Surat Anda
+                    </button>
+                </div>
+            </a>
+        </div>
+
+        <!-- Informasi BPS - Langsung Tampil -->
+        <div style="max-width: 800px; margin: 30px auto 0; padding: 20px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 15px; border: 1px solid rgba(255,255,255,0.3);">
+            <div style="text-align: center; color: white;">
+                <div style="font-size: 1.2em; font-weight: 700; margin-bottom: 12px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    <strong>Badan Pusat Statistik Kabupaten Mempawah</strong>
+                </div>
+                <div style="font-size: 1em; margin-bottom: 8px; text-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    Sistem Monitoring Surat Digital | Inovasi Pelayanan Prima
+                </div>
+                <div style="font-size: 1em; margin-bottom: 12px; text-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    📧 Email: bps6104@bps.go.id | 📱 WhatsApp: 083852509777
+                </div>
+                <div style="font-size: 0.9em; opacity: 0.9; text-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 8px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                    🎯 Target Pelayanan: Responsif, Transparan, Akuntabel
+                </div>
+            </div>
         </div>
 
         <!-- Login Modal -->
@@ -580,9 +615,12 @@
             </div>
         </div>
 
+        <!-- Track Modal - REMOVED -->
+
         <div class="footer">
-            <div>Sistem Manajemen Surat Digital</div>
-            <div class="version">v2.0 - Secure Login System</div>
+            <div style="font-size: 0.9em; opacity: 0.7; margin-top: 20px;">
+                v2.0 - Dashboard ARSIPANDA
+            </div>
         </div>
     </div>
 
@@ -590,7 +628,6 @@
         // ===== KONFIGURASI LOGIN =====
         const INTERNAL_URL = "https://script.google.com/macros/s/AKfycbzZoC6GSjp9LjiVpYMuy6qPzzQq8FtRuLIBNxgNxbuSsmZ9LQe1t-DGt458wsn16xNEJA/exec";
         
-    
         const CREDENTIALS = {
             "YnBzNjEwNDpwZWdhd2FpNjEwNA==": true
         };
@@ -611,12 +648,29 @@
             const overlay = document.getElementById('loginOverlay');
             overlay.classList.add('show');
             
-            // Focus pada username
             setTimeout(() => {
                 document.getElementById('username').focus();
             }, 300);
             
-            // Update attempts warning jika sudah ada percobaan
+            updateAttemptsWarning();
+        }
+
+        function accessSystem(event) {
+            if (event) event.preventDefault();
+            
+            if (isLocked) {
+                alert('🚫 Akses ditangguhkan dalam sesi ini.\n\nSilakan refresh halaman (F5) untuk coba lagi.');
+                return;
+            }
+            
+            // Langsung buka login modal
+            const overlay = document.getElementById('loginOverlay');
+            overlay.classList.add('show');
+            
+            setTimeout(() => {
+                document.getElementById('username').focus();
+            }, 300);
+            
             updateAttemptsWarning();
         }
 
@@ -624,7 +678,6 @@
             const overlay = document.getElementById('loginOverlay');
             overlay.classList.remove('show');
             
-            // Reset form
             document.getElementById('loginForm').reset();
             hideMessages();
         }
@@ -639,33 +692,23 @@
                 return;
             }
             
-            // Show loading state
             loginBtn.classList.add('loading');
             loginBtn.textContent = 'Memverifikasi';
             
-            // Simulate verification delay (untuk keamanan)
             setTimeout(() => {
-                // Encode credentials
                 const credentials = btoa(username + ':' + password);
-                console.log('Encoded credentials:', credentials); // Untuk debugging
                 
                 if (CREDENTIALS[credentials]) {
-                    // Login berhasil
                     showSuccess('✅ Login berhasil! Mengalihkan ke sistem...');
                     
                     setTimeout(() => {
                         closeLoginModal();
-                        // Redirect ke sistem internal
                         window.open(INTERNAL_URL, '_blank');
-                        
-                        // Reset attempts setelah berhasil
                         resetLoginAttempts();
                     }, 1500);
                     
                 } else {
-                    // Login gagal
                     loginAttempts++;
-                    // HAPUS: localStorage.setItem('loginAttempts', loginAttempts);
                     
                     const remaining = maxAttempts - loginAttempts;
                     
@@ -673,7 +716,6 @@
                         showError(`❌ Username atau password salah! Sisa percobaan: ${remaining}`);
                         updateAttemptsWarning();
                         
-                        // Shake animation
                         const form = document.getElementById('loginForm');
                         form.style.animation = 'shake 0.5s ease-in-out';
                         setTimeout(() => {
@@ -681,7 +723,6 @@
                         }, 500);
                         
                     } else {
-                        // Habis percobaan
                         isLocked = true;
                         showError('🚫 Akses ditangguhkan! Silakan refresh halaman untuk coba lagi.');
                         
@@ -690,18 +731,17 @@
                         }, 2000);
                     }
                     
-                    // Clear password, keep username
                     document.getElementById('password').value = '';
                     document.getElementById('password').focus();
                 }
                 
-                // Reset button state
                 loginBtn.classList.remove('loading');
                 loginBtn.textContent = 'Masuk';
                 
-            }, 1000); // Delay untuk keamanan
+            }, 1000);
         }
 
+        // ===== UTILITY FUNCTIONS =====
         function togglePassword() {
             const passwordInput = document.getElementById('password');
             const toggleIcon = document.getElementById('toggleIcon');
@@ -745,31 +785,31 @@
             document.getElementById('successMessage').style.display = 'none';
         }
 
+        function hideTrackMessages() {
+            // Function removed - no longer needed
+        }
 
+        function resetLoginAttempts() {
+            loginAttempts = 0;
+            isLocked = false;
+        }
 
         // ===== EVENT LISTENERS =====
-        
-        // Enter key untuk submit form
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
-                const overlay = document.getElementById('loginOverlay');
-                if (overlay.classList.contains('show')) {
+                const loginOverlay = document.getElementById('loginOverlay');
+                
+                if (loginOverlay.classList.contains('show')) {
                     e.preventDefault();
                     performLogin();
                     return;
                 }
-                
-                // Keyboard navigation untuk menu
-                const focused = document.activeElement;
-                if (focused && focused.classList.contains('menu-card')) {
-                    focused.click();
-                }
             }
             
-            // Escape key untuk close modal
             if (e.key === 'Escape') {
-                const overlay = document.getElementById('loginOverlay');
-                if (overlay.classList.contains('show')) {
+                const loginOverlay = document.getElementById('loginOverlay');
+                
+                if (loginOverlay.classList.contains('show')) {
                     closeLoginModal();
                 }
             }
@@ -782,47 +822,17 @@
             }
         });
 
-        // Touch feedback for mobile
-        document.querySelectorAll('.menu-card').forEach(card => {
-            card.addEventListener('touchstart', function() {
-                this.style.transform = 'translateY(-10px) scale(0.98)';
-            });
-            
-            card.addEventListener('touchend', function() {
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
-
-        // ===== RESET FUNCTION =====
-        function resetLoginAttempts() {
-            loginAttempts = 0;
-            isLocked = false;
-            localStorage.removeItem('loginAttempts');
-            localStorage.removeItem('lockTime');
-            console.log('🔄 Login attempts reset');
-        }
-
         // ===== INITIALIZATION =====
         document.addEventListener('DOMContentLoaded', function() {
-            // PERBAIKAN: Reset otomatis setiap refresh halaman
             resetLoginAttempts();
             
-            // Preload internal system
             const preloader = document.createElement('link');
             preloader.rel = 'prefetch';
             preloader.href = INTERNAL_URL;
             document.head.appendChild(preloader);
         });
 
-        console.log('🔐 Simple login system enabled');
-        console.log('👤 Login credentials:');
-        console.log('🏢 Dashboard BPS Mempawah loaded successfully');
+        console.log('🔐 Dashboard BPS Mempawah loaded successfully');
     </script>
 </body>
-
 </html>
-
-
-
